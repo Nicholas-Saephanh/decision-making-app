@@ -3,8 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
+	<button type="button" onclick="coinFlip()">Coin flip</button>
+	<h1 id="coin">HEADS</h1>
 	
+	<div id="randomList">	
+		<h1>Choose from List</h1>
+		<ul id="list">
+				<input type="text" id="newItemText">
+				<button id="addItemToList" onclick="addListItem()">Add Item</button>
+				<button id="chooseRandom" onclick="chooseRandomListItem(this.id)">Choose Random Item</button>
+		</ul>
+	</div>
+
+
+<script src="script.js"></script>
 </body>
 </html>
