@@ -20,7 +20,7 @@ function addListItem() {
 	//If the value of the text box already exists, dont let user submit that text
 	for (let i = listItems.length - 1; i >= 0; i--) {
 		if (userInputText.toLowerCase() === listItems[i].innerHTML.toLowerCase()) {
-			console.log(userInputText, listItems)
+			console.error(listItems[i].innerHTML + " is already on the list!")
 			console.error('Item already exists')
 			return
 		}
@@ -29,7 +29,6 @@ function addListItem() {
 	
 	if (userInputText === "") {
 		console.error("Please Insert New Item text");
-		console.error(userInputText);
 		return 
 	}else{
 		newListItem.appendChild(newTextNode);
