@@ -11,13 +11,25 @@ function addListItem() {
 	// }​
 	let buttonClicked = document.getElementById("addItemToList");
 	let parentList = document.getElementById(buttonClicked.parentElement.id);
+	let listItems = parentList.getElementsByTagName('li');
 	let newListItem = document.createElement('li');
 	let userInputText = document.getElementById("newItemText").value.trim();
-	let newTextNode = document.createTextNode(document.getElementById("newItemText").value.trim());
+	let newTextNode = document.createTextNode(userInputText);
+
+
+	//If the value of the text box already exists, dont let user submit that text
+	for (let i = listItems.length - 1; i >= 0; i--) {
+		if (userInputText.toLowerCase() === listItems[i].innerHTML.toLowerCase()) {
+			console.log(userInputText, listItems)
+			console.error('Item already exists')
+			return
+		}
+	}
 
 	
-	if (document.getElementById("newItemText").value.trim() === "") {
+	if (userInputText === "") {
 		console.error("Please Insert New Item text");
+		console.error(userInputText);
 		return 
 	}else{
 		newListItem.appendChild(newTextNode);
@@ -42,6 +54,7 @@ function chooseRandomListItem(buttonID) {
 
 	if (randomChoice === undefined) {
 		console.log("There is nothing on the list dummy!");
+		return
 	}
 
 	console.log(randomChoice);
@@ -69,7 +82,3 @@ function coinFlip() {
     }
  }
 
- function pickFromList(){
- 	let list = [];
-
- }
