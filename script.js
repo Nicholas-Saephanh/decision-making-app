@@ -2,13 +2,6 @@
 //		HELPER FUNCTIONS
 //===============================================
 function addListItem() {
-	// var buttons = document.getElementsByTagName("button");
-	// var buttonsCount = buttons.length;
-	// for (let i = 0; i <= buttonsCount; i++) {
-	//     buttons[i].onclick = function(e) {
-	//         alert(this.id);
-	//     };
-	// }​
 	let buttonClicked = document.getElementById("addItemToList");
 	let parentList = document.getElementById(buttonClicked.parentElement.id);
 	let listItems = parentList.getElementsByTagName('li');
@@ -20,7 +13,7 @@ function addListItem() {
 	//If the value of the text box already exists, dont let user submit that text
 	for (let i = listItems.length - 1; i >= 0; i--) {
 		if (userInputText.toLowerCase() === listItems[i].innerHTML.toLowerCase()) {
-			console.error(listItems[i].innerHTML + " is already on the list!")
+			console.error(listItems[i].innerHTML + " is already on the list!");
 			console.error('Item already exists')
 			return
 		}
