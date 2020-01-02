@@ -45,7 +45,7 @@ function chooseRandomListItem(buttonID) {
 	let randomChoice = listItemsOfList[randomNumber];
 
 	if (randomChoice === undefined) {
-		console.log("There is nothing on the list dummy!");
+		console.error("There is nothing on the list dummy!");
 		return
 	}
 
