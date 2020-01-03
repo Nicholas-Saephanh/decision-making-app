@@ -2,6 +2,11 @@
 //===============================================
 //		HELPER FUNCTIONS
 //===============================================
+(function (window, document) {
+	// body...
+	var lastCoinFlip = document.getElementById('lastCoinFlip').innerHTML;
+	
+	
 function addListItem() {
 	let buttonClicked = document.getElementById("addItemToList");
 	let parentList = document.getElementById(buttonClicked.parentElement.id);
@@ -37,8 +42,8 @@ function addListItem() {
 	console.log(buttonClicked.parentElement.id);
 }
 
-function chooseRandomListItem(buttonID) {
-	let buttonClicked = document.getElementById(buttonID);
+function chooseRandomListItem() {
+	let buttonClicked = document.getElementById("chooseRandom");
 	let parentOfButtonClicked = document.getElementById(buttonClicked.parentElement.id);
 	let listItemsOfList = parentOfButtonClicked.getElementsByTagName('li');
 	let randomNumber = Math.floor(Math.random() * listItemsOfList.length);
@@ -74,3 +79,12 @@ function coinFlip() {
     }
  }
 
+
+
+
+
+	//Event listeners to delegate functions from inside the IIFE
+	document.getElementById("addItemToList").addEventListener("click", addListItem, false);
+	document.getElementById("coinFlip").addEventListener("click", coinFlip, false);
+	document.getElementById("chooseRandom").addEventListener("click", chooseRandomListItem, false)
+})(window, document);
