@@ -3,9 +3,7 @@
 //		HELPER FUNCTIONS
 //===============================================
 (function (window, document) {
-	// body...
-	var lastCoinFlip = document.getElementById('lastCoinFlip').innerHTML;
-	
+
 	
 function addListItem() {
 	let buttonClicked = document.getElementById("addItemToList");
@@ -65,16 +63,18 @@ function coinFlip() {
     let random = Math.floor(Math.random() * 2);
     // console.log("Random Number Generated : " + random );  
     if( random == 1 ){
-    	if (document.getElementById('coin').innerHTML == 'HEADS') {
+    	if (document.getElementById('coin').dataset.lastFlipResult == 'heads') {
     		document.getElementById('coin').innerHTML += " AGANE";
     	}else{
-    		document.getElementById('coin').innerHTML = 'HEADS';
+    		document.getElementById('coin').dataset.lastFlipResult = 'heads';
+    		document.getElementById('coin').innerHTML = "Heads";
     	}
     }else{
-		if (document.getElementById('coin').innerHTML == 'TAILS') {
+		if (document.getElementById('coin').dataset.lastFlipResult == 'tails') {
     		document.getElementById('coin').innerHTML += " AGANE";
     	}else{
-    		document.getElementById('coin').innerHTML = 'TAILS';
+    		document.getElementById('coin').dataset.lastFlipResult = 'tails';
+    		document.getElementById('coin').innerHTML = "Tails";
     	}
     }
  }
