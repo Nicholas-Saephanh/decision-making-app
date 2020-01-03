@@ -14,7 +14,6 @@ function addListItem() {
 	for (let i = listItems.length - 1; i >= 0; i--) {
 		if (userInputText.toLowerCase() === listItems[i].innerHTML.toLowerCase()) {
 			console.error(listItems[i].innerHTML + " is already on the list!");
-			console.error('Item already exists')
 			return
 		}
 	}
