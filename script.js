@@ -56,7 +56,7 @@ function chooseRandomListItem() {
 }
 
 //===============================================
-//		APP FUNCTIONS
+//		APP FUNCTIONS 
 //===============================================
 function coinFlip() {
 	//when moving to oop, make an outside variable that keeps count of how many sequential heads and tails, then add agane additional agane per count.
