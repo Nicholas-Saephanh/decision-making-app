@@ -1,0 +1,12 @@
+/*Removing padding from the bootstrap ul*/
+ul{
+	padding: 0;
+	list-style-position: inside;
+	list-style: circle;
+}
+li{
+	margin-left: 35px;
+}
+div{
+	padding: 15px 20px;
+}
