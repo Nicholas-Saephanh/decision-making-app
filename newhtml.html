@@ -10,12 +10,14 @@
 	<button id="coinFlip" type="button" >Coin flip</button>
 	<h1 id="coin" data-lastFlipResult="heads">Heads</h1>
 	
-	<div id="randomList">	
-		<h1>Choose from List</h1>
+	<div id="randomList">
 		<ul id="list">
-				<input type="text" id="newItemText">
-				<button id="addItemToList" >Add Item</button>
-				<button id="chooseRandom">Choose Random Item</button>
+			<div id="randomListAlert" class="alert alert-primary" role="alert">
+			  Add any number of unique items to the list and choose randomly between any of them!
+			</div>
+			<input type="text" id="newItemText" placeholder="New Item">
+			<button id="addItemToList" >Add Item</button>
+			<button id="chooseRandom">Choose Random Item</button>
 		</ul>
 	</div>
 

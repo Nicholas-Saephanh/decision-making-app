@@ -12,12 +12,15 @@ function addListItem() {
 	let newListItem = document.createElement('li');
 	let userInputText = document.getElementById("newItemText").value.trim();
 	let newTextNode = document.createTextNode(userInputText);
+	let randomListAlert = document.getElementById('randomListAlert');
 
 
 	//If the value of the text box already exists, dont let user submit that text
 	for (let i = listItems.length - 1; i >= 0; i--) {
 		if (userInputText.toLowerCase() === listItems[i].innerHTML.toLowerCase()) {
 			console.error(listItems[i].innerHTML + " is already on the list!");
+			randomListAlert.className = "alert alert-danger";
+			randomListAlert.innerHTML = "That item is already on the list! Please type something unique!"
 			return
 		}
 	}
@@ -25,6 +28,8 @@ function addListItem() {
 	
 	if (userInputText === "") {
 		console.error("Please Insert New Item text");
+		randomListAlert.className = "alert alert-danger";
+		randomListAlert.innerHTML = "'New Item' box is empty! Type something in, then click Add Item!"
 		return 
 	}else{
 		newListItem.appendChild(newTextNode);
@@ -46,12 +51,17 @@ function chooseRandomListItem() {
 	let listItemsOfList = parentOfButtonClicked.getElementsByTagName('li');
 	let randomNumber = Math.floor(Math.random() * listItemsOfList.length);
 	let randomChoice = listItemsOfList[randomNumber];
+	let randomListAlert = document.getElementById('randomListAlert');
 
 	if (randomChoice === undefined) {
 		console.error("There is nothing on the list dummy!");
+		randomListAlert.className = "alert alert-danger";
+		randomListAlert.innerHTML = "There is nothing on the list dummy!";
 		return
 	}
-
+	
+	randomListAlert.className = "alert alert-success";
+	randomListAlert.innerHTML = "Add any number of unique items to the list and choose randomly between any of them!";
 	console.log(randomChoice);
 }
 
