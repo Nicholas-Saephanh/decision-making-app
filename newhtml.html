@@ -9,7 +9,7 @@
 <body>
 	<div id="coinFlipApp">
 		<button id="coinFlip" type="button" >Coin flip</button>
-		<h1 id="coin" data-last-flip-result="heads">Heads</h1>
+		<h1  data-last-flip-result="heads">Heads</h1>
 	</div>
 	
 	<div id="randomList">
@@ -24,6 +24,34 @@
 	</div>
 
 
+<div id="coin-flip-cont">
+<div id="coin">
+<div class="front"></div>
+<div class="back"></div>
+</div>
+</div>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
 <script src="script.js"></script>
+<script>
+	var spinArray = ['animation900'];
+	function getSpin() {
+		var spin = spinArray[Math.floor(Math.random()*spinArray.length)];
+		return spin;
+	}
+	function addSpinClass(){
+		document.getElementById('coin').className="";
+		setTimeout(function(){
+			document.getElementById('coin').className=getSpin();
+		}, 100);
+
+	}
+	document.getElementById('coin').addEventListener('click', addSpinClass, false);
+	
+</script>
 </body>
 </html>
