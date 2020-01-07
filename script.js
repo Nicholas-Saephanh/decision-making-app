@@ -85,7 +85,7 @@ function coinFlip() {
 	    		document.getElementById('coin').dataset.lastFlipResult = 'heads';
 	    		console.log('tails to heads')
 	    	}		
-		}, 100);
+		}, 0);
     	
     }else{ 
     	//flip to the same side
@@ -100,7 +100,7 @@ function coinFlip() {
 	    		document.getElementById('coin').dataset.lastFlipResult = 'tails';
 	    		console.log('tails to tails')
 	    	}	
-		}, 100);
+		}, 0);
 		
     }
  }
