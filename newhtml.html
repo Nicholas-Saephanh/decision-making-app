@@ -26,8 +26,8 @@
 
 <div id="coin-flip-cont">
 <div id="coin" data-last-flip-result="heads">
-<div class="front"></div>
-<div class="back"></div>
+<div class="front">HEADS</div>
+<div class="back">TAILS</div>
 </div>
 </div>
 
@@ -38,20 +38,7 @@
   crossorigin="anonymous"></script>
 <script src="script.js"></script>
 <script>
-	var spinArray = ['animation900'];
-	function getSpin() {
-		var spin = spinArray[Math.floor(Math.random()*spinArray.length)];
-		return spin;
-	}
-	function addSpinClass(){
-		var lastFlip = document.getElementById('coin').dataLastFlipResult;
-		document.getElementById('coin').className="";
-		setTimeout(function(){
-			document.getElementById('coin').className='animation900';
-		}, 1);
 
-	}
-	document.getElementById('coin').addEventListener('click', addSpinClass, false);
 	
 </script>
 </body>

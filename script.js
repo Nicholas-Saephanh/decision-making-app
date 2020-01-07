@@ -69,29 +69,38 @@ function chooseRandomListItem() {
 //		APP FUNCTIONS 
 //===============================================
 function coinFlip() {
-	var lastFlipResult = document.getElementById('coin').dataset.LastFlipResult;
-	//when moving to oop, make an outside variable that keeps count of how many sequential heads and tails, then add agane additional agane per count.
-    let random = Math.floor(Math.random() * 2);
-    // console.log("Random Number Generated : " + random );  
-    if( random == 1 ){ //if 1, flip to the same side
-    		// document.getElementById('coin').innerHTML += " AGANE";
+	let lastFlipResult = document.getElementById('coin').dataset.lastFlipResult;
+    let random = Math.floor(Math.random() * 2); 
+    if( random == 1 ){ 
+    	//if 1, flip to the opposite side
+    	//Find #coin and remove all classes to reapply class to activate css animation
 		document.getElementById('coin').className="";
 		setTimeout(function(){
-			document.getElementById('coin').className='animation900';
-		}, 1);
+			if (lastFlipResult === 'heads') {
+				document.getElementById('coin').className='animation900FromHeads';
+				document.getElementById('coin').dataset.lastFlipResult = 'tails';
+				console.log(lastFlipResult)
+	    	}else if(lastFlipResult === 'tails'){
+	    		document.getElementById('coin').className='animation1080FromTails';
+	    		document.getElementById('coin').dataset.lastFlipResult = 'heads';
+	    		console.log(lastFlipResult)
+	    	}		
+		}, 100);
     	
-    }else{ //flip to the opposite side
+    }else{ 
+    	//flip to the same side
     	document.getElementById('coin').className="";
 		setTimeout(function(){
-			document.getElementById('coin').className='animation1080';
-			if (lastFlipResult == 'tails') {
-				lastFlipResult = 'heads';
-	    		// document.getElementById('coin').innerHTML += " AGANE";
-	    	}else{
-	    		lastFlipResult = 'tails';
-	    		// document.getElementById('coin').innerHTML = "Tails";
-	    	}
-		}, 1);
+			if (lastFlipResult === 'heads') {
+				document.getElementById('coin').className='animation1080FromHeads';
+				document.getElementById('coin').dataset.lastFlipResult = 'heads';
+				console.log(lastFlipResult)
+	    	}else if(lastFlipResult === 'tails'){
+	    		document.getElementById('coin').className='animation900FromTails';
+	    		document.getElementById('coin').dataset.lastFlipResult = 'tails';
+	    		console.log(lastFlipResult)
+	    	}	
+		}, 100);
 		
     }
  }

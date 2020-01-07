@@ -18,54 +18,74 @@ div{
 
 
 #coin-flip-cont {
-width: 200px;
-height: 200px;
-position: absolute;
-top: calc(50% - 100px);
-left: calc(50% - 100px);
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	top: calc(50% - 100px);
+	left: calc(50% - 100px);
 }
 
 #coin {
-position: relative;
-width: 200px;
-height: 200px;
-transform-style: preserve-3d;
-transform-origin: center;
-padding: 0;
+	position: relative;
+	width: 200px;
+	height: 200px;
+	transform-style: preserve-3d;
+	transform-origin: center;
+	padding: 0;
 }
 
 #coin .front, #coin .back {
-position: absolute;
-width: 200px;
-height: 200px;
+	position: absolute;
+	width: 200px;
+	height: 200px;
 }
 
 #coin .front {
-transform: translateZ(1px);
-border-radius: 50%;
-background-color: #3498db;
+	transform: translateZ(1px);
+	border-radius: 50%;
+	background-color: #3498db;
 }
 
 #coin .back {
-transform: translateZ(-1px) rotateY(180deg);
-border-radius: 50%;
-background-color: #2ecc71;
+	transform: translateZ(-1px) rotateY(180deg);
+	border-radius: 50%;
+	background-color: #2ecc71;
 }
 
-#coin.animation900 {
--webkit-animation: rotate900 1s ease-out forwards; 
-animation: rotate900 1s ease-out forwards;
+#coin.animation900FromHeads {
+	-webkit-animation: rotate900FromHeads 1s ease-out forwards; 
+	animation: rotate900FromHeads 1s ease-out forwards;
 }
-#coin.animation1080 {
--webkit-animation: rotate1080 1s ease-out forwards; 
-animation: rotate1080 1s ease-out forwards;
+#coin.animation1080FromHeads {
+	-webkit-animation: rotate1080FromHeads 1s ease-out forwards; 
+	animation: rotate1080FromHeads 1s ease-out forwards;
 }
-@-webkit-keyframes rotate900 {
-from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
-to { -webkit-transform: rotateY(900deg); -moz-transform: rotateY(900deg); transform: rotateY(900deg); }
+#coin.animation900FromTails {
+	-webkit-animation: rotate900FromTails 1s ease-out forwards; 
+	animation: rotate900FromTails 1s ease-out forwards;
 }
-@-webkit-keyframes rotate1080 {
-from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
-to { -webkit-transform: rotateY(1080deg); -moz-transform: rotateY(1080deg); transform: rotateY(1080deg); }
+#coin.animation1080FromTails {
+	-webkit-animation: rotate1080FromTails 1s ease-out forwards; 
+	animation: rotate1080FromTails 1s ease-out forwards;
+}
+/* OPPOSITE SIDE OF HEADS 900*/
+@-webkit-keyframes rotate900FromHeads {
+	from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+	to { -webkit-transform: rotateY(900deg); -moz-transform: rotateY(900deg); transform: rotateY(900deg); }
+	}
+/* SAME SIDE OF HEADS 1080*/
+@-webkit-keyframes rotate1080FromHeads {
+	from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+	to { -webkit-transform: rotateY(1080deg); -moz-transform: rotateY(1080deg); transform: rotateY(1080deg); }
+}
+/* SAME SIDE OF TAILS 900*/
+@-webkit-keyframes rotate900FromTails {
+	from { -webkit-transform: rotateY(180deg); -moz-transform: rotateY(180deg); transform: rotateY(180deg); }
+	to { -webkit-transform: rotateY(900deg); -moz-transform: rotateY(900deg); transform: rotateY(900deg); }
+	}
+/* OPPOSITE SIDE OF TAILS 1080*/
+@-webkit-keyframes rotate1080FromTails {
+	from { -webkit-transform: rotateY(180deg); -moz-transform: rotateY(180deg); transform: rotateY(180deg); }
+	to { -webkit-transform: rotateY(1080deg); -moz-transform: rotateY(1080deg); transform: rotateY(1080deg); }
 }
 
