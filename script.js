@@ -79,11 +79,11 @@ function coinFlip() {
 			if (lastFlipResult === 'heads') {
 				document.getElementById('coin').className='animation900FromHeads';
 				document.getElementById('coin').dataset.lastFlipResult = 'tails';
-				console.log(lastFlipResult)
+				console.log('heads to tails')
 	    	}else if(lastFlipResult === 'tails'){
 	    		document.getElementById('coin').className='animation1080FromTails';
 	    		document.getElementById('coin').dataset.lastFlipResult = 'heads';
-	    		console.log(lastFlipResult)
+	    		console.log('tails to heads')
 	    	}		
 		}, 100);
     	
@@ -94,11 +94,11 @@ function coinFlip() {
 			if (lastFlipResult === 'heads') {
 				document.getElementById('coin').className='animation1080FromHeads';
 				document.getElementById('coin').dataset.lastFlipResult = 'heads';
-				console.log(lastFlipResult)
+				console.log('from heads to heads')
 	    	}else if(lastFlipResult === 'tails'){
 	    		document.getElementById('coin').className='animation900FromTails';
 	    		document.getElementById('coin').dataset.lastFlipResult = 'tails';
-	    		console.log(lastFlipResult)
+	    		console.log('tails to tails')
 	    	}	
 		}, 100);
 		
