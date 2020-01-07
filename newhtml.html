@@ -25,7 +25,7 @@
 
 
 <div id="coin-flip-cont">
-<div id="coin">
+<div id="coin" data-last-flip-result="heads">
 <div class="front"></div>
 <div class="back"></div>
 </div>
@@ -44,10 +44,11 @@
 		return spin;
 	}
 	function addSpinClass(){
+		var lastFlip = document.getElementById('coin').dataLastFlipResult;
 		document.getElementById('coin').className="";
 		setTimeout(function(){
-			document.getElementById('coin').className=getSpin();
-		}, 100);
+			document.getElementById('coin').className='animation900';
+		}, 1);
 
 	}
 	document.getElementById('coin').addEventListener('click', addSpinClass, false);
