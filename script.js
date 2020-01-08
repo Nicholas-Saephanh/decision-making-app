@@ -35,6 +35,8 @@ function addListItem() {
 		newListItem.appendChild(newTextNode);
 		parentList.appendChild(newListItem);
 		document.getElementById("newItemText").value = "";
+		randomListAlert.className = "alert alert-success";
+		randomListAlert.innerHTML = "Add any number of unique items to the list and choose randomly between any of them!";
 	}
 	
 
@@ -52,6 +54,12 @@ function chooseRandomListItem() {
 	let randomNumber = Math.floor(Math.random() * listItemsOfList.length);
 	let randomChoice = listItemsOfList[randomNumber];
 	let randomListAlert = document.getElementById('randomListAlert');
+	let slotDiv = document.getElementById('slotBox');
+	let newH1 = document.createElement('h1');
+	let newH1TextNode = document.createTextNode(randomChoice.innerHTML);
+
+	
+
 
 	if (randomChoice === undefined) {
 		console.error("There is nothing on the list dummy!");
@@ -62,6 +70,12 @@ function chooseRandomListItem() {
 	
 	randomListAlert.className = "alert alert-success";
 	randomListAlert.innerHTML = "Add any number of unique items to the list and choose randomly between any of them!";
+
+	slotDiv.innerHTML ="";
+	newH1.appendChild(newH1TextNode);
+	newH1.className='animated fadeIn';
+	slotDiv.appendChild(newH1);
+
 	console.log(randomChoice);
 }
 
@@ -106,10 +120,18 @@ function coinFlip() {
  }
 
 
+	function runScript(e) {
+	    //See notes about 'which' and 'key'
+	    if (document.activeElement.id === 'newItemText' && e.keyCode == 13 ) {
+	        addListItem();
+	        return false;
+	    }
+	}
 
 
 
 	//Event listeners to delegate functions from inside the IIFE
+	document.getElementById("newItemText").addEventListener("keyup", runScript, false);
 	document.getElementById("addItemToList").addEventListener("click", addListItem, false);
 	document.getElementById("coinFlip").addEventListener("click", coinFlip, false);
 	document.getElementById("chooseRandom").addEventListener("click", chooseRandomListItem, false)
