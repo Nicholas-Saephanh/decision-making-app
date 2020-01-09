@@ -1,19 +1,28 @@
 "use strict";
 //===============================================
-//		HELPER FUNCTIONS
+//		APP IIFE
 //===============================================
 (function (window, document) {
+	//Create a button INSIDE the UL with #addItemToList
+	//Create a text input INSIDE the UL with #newItemText
 function addListItem() {
+	//target button inside UL
 	let buttonClicked = document.getElementById("addItemToList");
+	//Get the id of the parent element, which should be the UL
 	let parentList = document.getElementById(buttonClicked.parentElement.id);
+	//Array of li in the UL
 	let listItems = parentList.getElementsByTagName('li');
+	//Creates empty Element node li
 	let newListItem = document.createElement('li');
+	//Takes the value of the input box 
 	let userInputText = document.getElementById("newItemText").value.trim();
+	//create html text node from userInputText
 	let newTextNode = document.createTextNode(userInputText);
+	//Get the alert box at top of list app
 	let randomListAlert = document.getElementById('randomListAlert');
 
 
-	//If the value of the text box already exists, dont let user submit that text
+	//If the value of the text box already exists, dont let user submit that text and throw error into alert box
 	for (let i = listItems.length - 1; i >= 0; i--) {
 		if (userInputText.toLowerCase() === listItems[i].innerHTML.toLowerCase()) {
 			console.error(listItems[i].innerHTML + " is already on the list!");
