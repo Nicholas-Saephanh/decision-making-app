@@ -3,8 +3,6 @@
 //		HELPER FUNCTIONS
 //===============================================
 (function (window, document) {
-
-	
 function addListItem() {
 	let buttonClicked = document.getElementById("addItemToList");
 	let parentList = document.getElementById(buttonClicked.parentElement.id);
