@@ -17,12 +17,11 @@ div{
 ============================================== */
 
 
+
 #coin-flip-cont {
-	width: 200px;
-	height: 200px;
-	position: absolute;
-	top: calc(50% - 100px);
-	left: calc(50% - 100px);
+	box-sizing: border-box;
+	border: 10px double black;
+	text-align: center;
 }
 
 #coin {
@@ -91,3 +90,11 @@ div{
 	to { -webkit-transform: rotateY(1080deg); -moz-transform: rotateY(1080deg); transform: rotateY(1080deg); }
 }
 
+
+/*============================================
+		Dice Div
+============================================== */
+
+#diceRoll{
+	height: 500px;
+}

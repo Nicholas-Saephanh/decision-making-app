@@ -5,17 +5,16 @@
 	<title></title>
 	<link rel="stylesheet" href="animate.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="dice.css">
 	<link rel="stylesheet" type="text/css" href="css.css">
 
 </head>
 <body>
-	<div id="coinFlipApp">
+	<div id="coin-flip-cont">
 		<button id="coinFlip" type="button" >Coin flip</button>
-		<div id="coin-flip-cont">
 		<div id="coin" data-last-flip-result="heads">
 				<div class="front">HEADS</div>
 				<div class="back">TAILS</div>
-		</div>
 		</div>
 	</div>
 	
@@ -33,9 +32,13 @@
 		</div>
 	</div>
 
-
+	<div id="diceRoll">
+		<span class="dice dice-2" title="Dice 1"></span>
+	</div>
 	
-
+<script src="cannon.js"></script>
+<script src="three.js"></script>
+<script src="dice.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
