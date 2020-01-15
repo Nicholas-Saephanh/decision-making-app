@@ -128,6 +128,57 @@ function coinFlip() {
  }
 
 
+ /*===============================
+ 		Deck 
+ ================================*/
+ 	const deck ={
+	    ranks: ['A', 'K', 'Q', 'J', '10','9','8','7','6','5','4','3','2'],
+	    suits: ['♠','♥','♣','♦'],
+	    cards: [],
+	    suitColor: {
+	      '♠': 'black',
+	      '♣': 'black',
+	      '♦': 'red',
+	      '♥': 'red',
+	    },
+	    displayInitialDeck: function() {
+	      let id = 1;
+	      this.cards = [];
+	      for( let s = 0; s < this.suits.length; s++ ) {
+	        for( let r = 0; r < this.ranks.length; r++ ) {
+	          let card = {
+	            id: id,
+	            rank: this.ranks[r],
+	            suit: this.suits[s],
+	            flipped: false,
+	          }
+	          this.cards.push(card);
+	          id++;
+	        }
+	      }
+	      console.table(this.cards);
+	      this.isDeckShuffled = false;
+	      this.shuffleCount = 0;
+	    }/*,
+	    shuffleDeck() {        
+	      for(let i = this.cards.length - 1; i > 0; i--) {
+	        let randomIndex = Math.floor(Math.random() * i);
+	        
+	        let temp = this.cards[i];
+	        Vue.set(this.cards, i, this.cards[randomIndex]);
+	        Vue.set(this.cards, randomIndex, temp);
+	      }
+
+	      this.isDeckShuffled = true;
+	      this.shuffleCount = this.shuffleCount + 1;
+	    }*/
+	}
+	deck.displayInitialDeck();
+
+
+
+
+
 	function runScript(e) {
 	    //See notes about 'which' and 'key'
 	    if (document.activeElement.id === 'newItemText' && e.keyCode == 13 ) {
@@ -135,47 +186,9 @@ function coinFlip() {
 	        return false;
 	    }
 	}
-
-
-
 	//Event listeners to delegate functions from inside the IIFE
 	document.getElementById("newItemText").addEventListener("keyup", runScript, false);
 	document.getElementById("addItemToList").addEventListener("click", addListItem, false);
 	document.getElementById("coinFlip").addEventListener("click", coinFlip, false);
 	document.getElementById("chooseRandom").addEventListener("click", chooseRandomListItem, false)
 })(window, document);
-
-  // Setup your threejs scene
-    var scene = new THREE.Scene();
-    // ...
-    
-    // Setup your cannonjs world
-    var world = new CANNON.World();
-    // ...
-    
-    DiceManager.setWorld(world);
-    
-    // Create a dice
-    var dice = new DiceD6({backColor: '#ff0000'});
-    scene.add(dice.getObject());
-    
-    // If you want to place the mesh somewhere else, you have to update the body
-    dice.getObject().position.x = 150;
-    dice.getObject().position.y = 100;
-    dice.getObject().rotation.x = 20 * Math.PI / 180;
-    dice.updateBodyFromMesh();
-    
-    // Set the value of the side, which will be upside after the dice lands
-    DiceManager.prepareValues([{dice: dice, value: 6}]);
-    
-    //Animate everything
-    function animate() {
-        world.step(1.0 / 60.0);
-        
-        dice.updateMeshFromBody(); // Call this after updating the physics world for rearranging the mesh according to the body
-        
-        renderer.render(scene, camera);
-        
-        requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
