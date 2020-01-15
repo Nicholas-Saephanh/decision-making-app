@@ -150,16 +150,17 @@ function coinFlip() {
 	            id: id,
 	            rank: this.ranks[r],
 	            suit: this.suits[s],
-	            flipped: false,
+	            flipped: false, //need to add face down logic later, delete this comment when done.
 	          }
 	          this.cards.push(card);
+	          document.getElementById('deck').innerHTML += `<span style='border:1px black solid;padding: 20px; display:inline-block;'> ${card.rank} of ${card.suit} </span>`;
 	          id++;
 	        }
 	      }
 	      console.table(this.cards);
 	      this.isDeckShuffled = false;
 	      this.shuffleCount = 0;
-	    }/*,
+	    },
 	    shuffleDeck() {        
 	      for(let i = this.cards.length - 1; i > 0; i--) {
 	        let randomIndex = Math.floor(Math.random() * i);
@@ -171,7 +172,7 @@ function coinFlip() {
 
 	      this.isDeckShuffled = true;
 	      this.shuffleCount = this.shuffleCount + 1;
-	    }*/
+	    }
 	}
 	deck.displayInitialDeck();
 
