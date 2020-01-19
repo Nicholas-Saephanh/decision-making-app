@@ -144,14 +144,16 @@ function coinFlip() {
 	    displayInitialDeck: function() {
 	      let id = 1;
 	      this.cards = [];
-	      for( let s = 0; s < this.suits.length; s++ ) {
-	        for( let r = 0; r < this.ranks.length; r++ ) {
+	      for( let r = 0; r < this.ranks.length; r++ ) {
+	      	for( let s = 0; s < this.suits.length; s++ ) {
 	          let card = {
 	            id: id,
 	            rank: this.ranks[r],
 	            suit: this.suits[s],
+	            color: (this.suits[s] === '♠' || this.suits[s] === '♣') ? "black" : "red",
 	            flipped: false, //need to add face down logic later, delete this comment when done.
 	          }
+	          // card.color = (this.suits[s] === '♠' || this.suits[s] === '♣') ? "black" : "red";
 	          this.cards.push(card);
 	          document.getElementById('deck').innerHTML += `<span style='border:1px black solid;padding: 20px; display:inline-block;'> ${card.rank} of ${card.suit} </span>`;
 	          id++;
