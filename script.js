@@ -141,7 +141,7 @@
             '♦': 'red',
             '♥': 'red',
         },
-        displayInitialDeck: function() {
+        createDeck: function() {
             let id = 1;
             this.cards = [];
             for (let r = 0; r < this.ranks.length; r++) {
@@ -156,7 +156,7 @@
                     }
                     this.cards.push(card);
                     // Shows all cards in div, Deck logic will not need all 52 cards in the div making it much easier.
-                    document.getElementById('deck').innerHTML += `<span style='border:1px black solid;padding: 20px; display:inline-block;'> ${card.rank} of ${card.suit} </span>`;
+                    
                     id++;
                 }
             }
@@ -184,10 +184,15 @@
             return array;
         },
         draw(array){
+        	const drawnCard = this.cards.pop();
+        	console.log(drawnCard); 
+        	 console.table(this.shuffle(this.cards));
 
+        	document.getElementById('deck').innerHTML += `<span style='border:1px black solid;padding:50px 25px; display:inline-block;'> ${drawnCard.rank} of ${drawnCard.suit} </span>`;
         },
     }
-    deck.displayInitialDeck();
+    deck.createDeck();
+    deck.draw();
 
 
 
