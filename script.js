@@ -1,5 +1,4 @@
 "use strict";
-
 //===============================================
 //		APP IIFE
 //===============================================
@@ -156,7 +155,6 @@
                     }
                     this.cards.push(card);
                     // Shows all cards in div, Deck logic will not need all 52 cards in the div making it much easier.
-                    
                     id++;
                 }
             }
@@ -211,3 +209,4 @@
     document.getElementById("coinFlip").addEventListener("click", coinFlip, false);
     document.getElementById("chooseRandom").addEventListener("click", chooseRandomListItem, false)
 })(window, document);
+
