@@ -3,6 +3,12 @@
 //		APP IIFE
 //===============================================
 (function(window, document) {
+
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+    }
     //Create a button INSIDE the UL with #addItemToList
     //Create a text input INSIDE the UL with #newItemText
     function addListItem() {
@@ -151,7 +157,7 @@
                         suit: this.suits[s],
                         color: (this.suits[s] === '♠' || this.suits[s] === '♣') ? "black" : "red",
                         flipped: false, //need to add face down logic later, delete this comment when done.
-                        // sortRank: 
+                        // sortRank: i probably don't need a sort rank for any intensive purpose.
                     }
                     this.cards.push(card);
                     // Shows all cards in div, Deck logic will not need all 52 cards in the div making it much easier.
@@ -164,7 +170,7 @@
             this.shuffleCount = 0;
         },
         shuffle(array) {
-        	//Fisher–Yates shuffle
+            //Fisher–Yates shuffle
             var m = array.length,
                 t, i;
 
@@ -181,18 +187,31 @@
             }
             return array;
         },
-        draw(array){
-        	const drawnCard = this.cards.pop();
-        	console.log(drawnCard); 
-        	 console.table(this.shuffle(this.cards));
+        draw(array) {
+            const drawnCard = this.cards.pop();
+            console.log(drawnCard);
+            console.table(this.shuffle(this.cards));
 
-        	document.getElementById('deck').innerHTML += `<span style='border:1px black solid;padding:50px 25px; display:inline-block;'> ${drawnCard.rank} of ${drawnCard.suit} </span>`;
+            document.getElementById('deck').innerHTML += `<span style='border:1px black solid;padding:50px 25px; display:inline-block;'> ${drawnCard.rank} of ${drawnCard.suit} </span>`;
         },
     }
-    deck.createDeck();
-    deck.draw();
+    // Add these 2 to even listeners later.
+    // deck.createDeck();
+    // deck.draw();
+
+    /*===============================
+    		Rock  Paper Scissors 
+    ================================*/
+    const rps = {
+    }
+    function rockPaperScissors() {
+    	const random = getRandomIntInclusive(1,3);
+    	const rpsDiv = document.getElementById("rps");
+    	const rpsArr = ["Rock", "Paper", "Scissors"];
+    	let playerNum = 1
 
 
+    }
 
 
 
@@ -209,4 +228,3 @@
     document.getElementById("coinFlip").addEventListener("click", coinFlip, false);
     document.getElementById("chooseRandom").addEventListener("click", chooseRandomListItem, false)
 })(window, document);
-
