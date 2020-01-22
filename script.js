@@ -192,9 +192,14 @@
             const drawnCard = deck.cards.pop();
             console.table(deck.cards);
             console.log(drawnCard);
+            let cardStyle = document.createElement('span');
+            cardStyle.style='border:1px black solid;padding:50px 25px; display:inline-block;';
+            let cardValue = document.createTextNode(` ${drawnCard.rank} of ${drawnCard.suit}`);
+            cardStyle.appendChild(cardValue);
 
-            document.getElementById('deckOutput').innerHTML += `<span style='border:1px black solid;padding:50px 25px; display:inline-block;'> ${drawnCard.rank} of ${drawnCard.suit} </span>`;
-        },
+            document.getElementById('deckOutput').appendChild(cardStyle);
+
+        }
     }
     // Add these 2 to even listeners later.
     deck.createDeck();
