@@ -193,9 +193,11 @@
             console.table(deck.cards);
             console.log(drawnCard);
             let cardStyle = document.createElement('span');
-            cardStyle.style='border:1px black solid;padding:50px 25px; display:inline-block;';
+            (drawnCard.color === "black") ? cardStyle.style='border:1px black solid;padding:50px 25px; display:inline-block;' : cardStyle.style='border:1px black solid;padding:50px 25px; display:inline-block; color:red;';
             let cardValue = document.createTextNode(` ${drawnCard.rank} of ${drawnCard.suit}`);
             cardStyle.appendChild(cardValue);
+
+
 
             document.getElementById('deckOutput').appendChild(cardStyle);
 
