@@ -62,18 +62,13 @@
 
     function chooseRandomListItem() {
         let buttonClicked = document.getElementById("chooseRandom");
-        let parentOfButtonClicked = document.getElementById(buttonClicked.parentElement.id);
-        let listItemsOfList = parentOfButtonClicked.getElementsByTagName('li');
+        let listID = document.getElementById("list");
+        let listItemsOfList = listID.getElementsByTagName('li');
         let randomNumber = Math.floor(Math.random() * listItemsOfList.length);
         let randomChoice = listItemsOfList[randomNumber];
         let randomListAlert = document.getElementById('randomListAlert');
         let slotDiv = document.getElementById('slotBox');
         let newH1 = document.createElement('h1');
-        let newH1TextNode = document.createTextNode(randomChoice.innerHTML);
-
-
-
-
         if (randomChoice === undefined) {
             console.error("There is nothing on the list dummy!");
             randomListAlert.className = "alert alert-danger";
@@ -81,11 +76,16 @@
             return
         }
 
+
+
+
+
+
         randomListAlert.className = "alert alert-success";
         randomListAlert.innerHTML = "Add any number of unique items to the list and choose randomly between any of them!";
 
         slotDiv.innerHTML = "";
-        newH1.appendChild(newH1TextNode);
+        newH1.appendChild(document.createTextNode(randomChoice.innerHTML));
         newH1.className = 'animated fadeIn';
         slotDiv.appendChild(newH1);
 
@@ -148,26 +148,27 @@
         },
         createDeck: function() {
             let id = 1;
-            this.cards = [];
-            for (let r = 0; r < this.ranks.length; r++) {
-                for (let s = 0; s < this.suits.length; s++) {
+            deck.cards = [];
+            document.getElementById('deckOutput').innerHTML = "";
+            for (let r = 0; r < deck.ranks.length; r++) {
+                for (let s = 0; s < deck.suits.length; s++) {
                     let card = {
                         id: id,
-                        rank: this.ranks[r],
-                        suit: this.suits[s],
-                        color: (this.suits[s] === '♠' || this.suits[s] === '♣') ? "black" : "red",
-                        flipped: false, //need to add face down logic later, delete this comment when done.
-                        // sortRank: i probably don't need a sort rank for any intensive purpose.
+                        rank: deck.ranks[r],
+                        suit: deck.suits[s],
+                        color: (deck.suits[s] === '♠' || deck.suits[s] === '♣') ? "black" : "red"
+
                     }
-                    this.cards.push(card);
-                    // Shows all cards in div, Deck logic will not need all 52 cards in the div making it much easier.
+                    deck.cards.push(card);
                     id++;
                 }
             }
+            deck.shuffle(deck.cards)
+            console.table(deck.cards);
             // Fisher–Yates shuffle
-            console.table(this.shuffle(this.cards));
-            this.isDeckShuffled = false;
-            this.shuffleCount = 0;
+            // console.table(this.shuffle(this.cards));
+            // this.isDeckShuffled = false;
+            // this.shuffleCount = 0;
         },
         shuffle(array) {
             //Fisher–Yates shuffle
@@ -187,31 +188,40 @@
             }
             return array;
         },
-        draw(array) {
-            const drawnCard = this.cards.pop();
+        draw() {
+            const drawnCard = deck.cards.pop();
+            console.table(deck.cards);
             console.log(drawnCard);
-            console.table(this.shuffle(this.cards));
 
-            document.getElementById('deck').innerHTML += `<span style='border:1px black solid;padding:50px 25px; display:inline-block;'> ${drawnCard.rank} of ${drawnCard.suit} </span>`;
+            document.getElementById('deckOutput').innerHTML += `<span style='border:1px black solid;padding:50px 25px; display:inline-block;'> ${drawnCard.rank} of ${drawnCard.suit} </span>`;
         },
     }
     // Add these 2 to even listeners later.
-    // deck.createDeck();
-    // deck.draw();
+    deck.createDeck();
+    deck.shuffle(deck.cards)
 
     /*===============================
     		Rock  Paper Scissors 
     ================================*/
-    const rps = {
-    }
+
     function rockPaperScissors() {
-    	const random = getRandomIntInclusive(1,3);
-    	const rpsDiv = document.getElementById("rps");
-    	const rpsArr = ["Rock", "Paper", "Scissors"];
-    	let playerNum = 1
-
-
+        const random = getRandomIntInclusive(1, 3);
+        const rpsDiv = document.getElementById("rpsOutput");
+        // const rpsArr = ["Rock", "Paper", "Scissors"];
+        console.log(random);
+        switch (random) {
+            case 1:
+                rpsDiv.innerHTML = "<h1 class='animated fadeIn'> Rock </h1>";
+                break;
+            case 2:
+                rpsDiv.innerHTML = "<h1 class='animated fadeIn'> Paper </h1>";
+                break;
+            case 3:
+                rpsDiv.innerHTML = "<h1 class='animated fadeIn'> Scissors </h1>";
+                break;
+        }
     }
+
 
 
 
@@ -223,8 +233,11 @@
         }
     }
     //Event listeners to delegate functions from inside the IIFE
+    document.getElementById("coinFlip").addEventListener("click", coinFlip, false);
     document.getElementById("newItemText").addEventListener("keyup", runScript, false);
     document.getElementById("addItemToList").addEventListener("click", addListItem, false);
-    document.getElementById("coinFlip").addEventListener("click", coinFlip, false);
-    document.getElementById("chooseRandom").addEventListener("click", chooseRandomListItem, false)
+    document.getElementById("chooseRandom").addEventListener("click", chooseRandomListItem, false);
+    document.getElementById('resetDeck').addEventListener("click", deck.createDeck, false);
+    document.getElementById('drawCard').addEventListener("click", deck.draw, false);
+    document.getElementById('chooseRps').addEventListener("click", rockPaperScissors, false);
 })(window, document);
